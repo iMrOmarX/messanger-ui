@@ -1,23 +1,37 @@
-import logo from './logo.svg';
+
 import './App.css';
+import Header from './components/header/header-component';
+import Message from './components/message/message-component';
+import NewMessageForm from './components/new-message-form/new-message-form-component';
+import ToggleShowMessageBtn from './components/toggle-show-message-btn/toggle-show-message-btn-component';
+
+import React, { useState } from 'react';
 
 function App() {
+
+  const [messages, setmessages] = useState([
+    {
+      sender: "Omar",
+      date: (new Date()),
+      content: "asdfdsaf "
+
+    }
+  ]);
+
+  const [isNewMessageFormShown, setisNewMessageFormShown] = useState(false)
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Header/>
+      {
+        messages.map((message , index) => {
+          return (
+            <Message message={message} key={index + message.sender} />
+          )
+        })
+      }
+      <ToggleShowMessageBtn isNewMessageFormShown={isNewMessageFormShown} setisNewMessageFormShown={setisNewMessageFormShown}/>
+      <NewMessageForm isNewMessageFormShown={isNewMessageFormShown}/>
     </div>
   );
 }
