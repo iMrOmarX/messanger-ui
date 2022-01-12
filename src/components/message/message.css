@@ -10,8 +10,7 @@
 }
 
 .message-container  > div {
-    flex: 50%; /* or - flex: 0 50% - or - flex-basis: 50% - */
-    /*demo*/
+    flex: 50%; 
     margin-bottom: 10px;
 }
 
@@ -28,11 +27,19 @@
     border-radius: 5px;
     background-color: #6687b1;
     color: white;
+    padding: 7px;
 }
 .left {
     text-align: left;
 }
 
+.delete-btn {
+    border: none;
+    border-radius: 5px;
+    color: white;
+    padding: 7px;
+    background-color: #bd2727;
+}
 
 .right {
     text-align: right;

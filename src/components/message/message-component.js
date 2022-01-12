@@ -12,19 +12,22 @@ function Message(props) {
     }
     return (
         <div className='message-container'>
-            <div className='container'>
-                <div className='message-sender left'>{props.message.sender}</div>
-                <div className='message-date right'>{(new Date(props.message.date)).toLocaleDateString()} <span className='time'>{(new Date(props.message.date)).toLocaleTimeString()}</span></div>
-            </div>
-
-            <div className='container'>
-                <div className='message-content left' style={{
+            <div className='message-sender left'>{props.message.sender}</div>
+            <div className='message-date right'>{(new Date(props.message.date)).toLocaleDateString()} <span className='time'>{(new Date(props.message.date)).toLocaleTimeString()}</span></div>
+            <div className='message-content left' style={{
                     textDecoration: (isRead)? "line-through" : "none"
                 }}>{props.message.content}</div>
-                
+
+            <div className='right'>
                 <button onClick={messageToggleRead} className='btn'>Toggle Read</button>
-               
-            </div>
+                <button onClick={() => {
+                    props.deleteMessage(id) 
+                }}
+                    className='delete-btn'
+                >Delete Message</button>
+                        
+            </div>  
+            
         </div>
     )
 }

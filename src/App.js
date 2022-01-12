@@ -34,10 +34,9 @@ function App() {
 
   }, [])
 
-  
+
   const sendMessage = (message) => {
      
-    console.log(message)
     fetch('http://localhost:5000/new-message', {
       method: 'POST',
       headers: {
@@ -54,13 +53,30 @@ function App() {
 
   }
 
+  const deleteMessage = (id) => {
+    fetch('http://localhost:5000/delete-message', {
+      method: 'DELETE',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        id
+      })
+    })
+    .then((data) => data.json())
+    .then((newMessages) => {
+      setmessages(newMessages)
+    })
+    .catch((e)=> console.log(e))
+  }
   return (
     <div className="App">
       <Header/>
       {
         messages.map((message , index) => {
           return (
-            <Message message={message} key={index + message.sender} />
+            <Message message={message} key={index + message.sender} deleteMessage={deleteMessage}/>
           )
         })
       }
