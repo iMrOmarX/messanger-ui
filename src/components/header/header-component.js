@@ -1,11 +1,12 @@
 import React from 'react'
+import './header.css'
 
 function Header() {
 
     return (
-        <div>
-            <h1>My Messaging App</h1>
-            <div id="time-div">{(new Date()).getTime()}</div>
+        <div id="header-container">
+            <h1 id="title">My Messaging App</h1>
+            <div id="date-time">{ (new Date()).toLocaleDateString()+ "  "} <span className="time">{(new Date()).toLocaleTimeString()}</span></div>
         </div>
     )
 }

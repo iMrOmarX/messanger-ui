@@ -1,0 +1,12 @@
+#toggle-show-message-btn {
+    float: left;
+    margin-left: 30px;
+    width: 200px;
+    height: 40px;
+    border-bottom: 3px solid rgb(252, 47, 47);
+}
+
+#toggle-container {
+    width: 100vw;
+    height: 10vh;
+}
